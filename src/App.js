@@ -1,10 +1,12 @@
 import './App.css';
-import Menu from './components/Menu';
+import NavBar from './components/NavBar';
+import ItemListContainer from './components/ItemListContainer';
 
 function App() {
   return (
     <div className="container">
-      <Menu />
+      <NavBar />
+      <ItemListContainer greeting="Welcome to my first e-commerce!" />
     </div>
   );
 }

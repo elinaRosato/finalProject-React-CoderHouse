@@ -2,8 +2,10 @@ import React from 'react';
 import '../App.css';
 import logo from '../logo-blue.png';
 import search from '../search-solid.svg'
+import CartWidget from './CartWidget';
 
-const Menu = () => {
+
+const NavBar = () => {
     return (
         <div className='header'>
             <img className='App-logo' src={logo} alt="Naturli Logo" />
@@ -22,10 +24,14 @@ const Menu = () => {
                     <li className='nav-item'>Contact</li>
                     <li className='nav-item'>Find us</li>
                     <li className='nav-item'>About us</li>
+                    <li className='nav-item'>
+                        <CartWidget />
+                    </li>
                 </ul>
             </nav>
+            
         </div>
     )
 }
 
-export default Menu;
+export default NavBar;

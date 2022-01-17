@@ -3,18 +3,22 @@
 }
 
 .App-logo {
-  height: 20vh;
+  height: 10vh;
   pointer-events: none;
 }
 
 .header {
   background-color: #e6e9ee;
-  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .nav-bar {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 5vh;
 }
 
 .nav-item{
@@ -29,6 +33,26 @@
 }
 .search {
   height: 1.5rem;
+}
+
+.cart-widget-container {
+  display: flex;
+  align-items: center;
+  margin-left: 2em;
+  height: 5vh;
+
+}
+
+.cart-widget-container p {
+  margin-left: .5em;
+}
+
+.greeting-container {
+  text-align: center;
+}
+
+.greeting {
+  font-size: 10vh;
 }
 
 @media (prefers-reduced-motion: no-preference) {
