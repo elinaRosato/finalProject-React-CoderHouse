@@ -1,14 +1,13 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import '../App.css';
 
-const ItemCount = (props) => {
+const Item = (props) => {
 
     const [itemsQty, setItemsQty] = useState(0);
 
     const decrementer = () => {
         if (itemsQty > 0) {
             setItemsQty ((prev) => prev - 1)
-
         };
     };
 
@@ -19,8 +18,12 @@ const ItemCount = (props) => {
     };
 
     return (
-        <div className='item-counter'>
-            <h2 className='item-name'>Avena Arrollada</h2>
+        <div className='item-container'>
+            <img src={props.productPictureURL} alt={props.productName} />
+            <h2 className='item-name'>{props.productName}</h2>
+            <p className='product-description'>{props.productDescription}</p>
+            <p className='product-stock'>Only {props.stock} left!</p>
+            <p className='product-price'>$ {props.productPrice}</p>
             <div className='counter-div'>
                 <button className='substract-button' onClick={decrementer}>-</button>
                 <p className='counter'>{itemsQty}</p>
@@ -31,4 +34,4 @@ const ItemCount = (props) => {
     );
 }
 
-export default ItemCount;
+export default Item;
