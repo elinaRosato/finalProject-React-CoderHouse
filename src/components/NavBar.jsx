@@ -3,6 +3,7 @@ import '../App.css';
 import logo from '../logo-blue.png';
 import search from '../search-solid.svg'
 import CartWidget from './CartWidget';
+import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 
 
 const NavBar = () => {
@@ -17,7 +18,7 @@ const NavBar = () => {
                             <button type="submit"><img class="search" src={search} /></button>
                         </form>
                     </li>
-                    <li className='nav-item'>Products</li>
+                    <li className='nav-item'><Link to="/">Home</Link></li>
                     <li className='nav-item'>Recipes</li>
                     <li className='nav-item'>Shop</li>
                     <li className='nav-item'>FAQ</li>

@@ -1,0 +1,27 @@
+[
+    {
+        "id":1,
+        "title":"Avena",
+        "Brand":"Naturli",
+        "price":"34",
+        "category":"Oat",
+        "description":"jskdvnjsdvnskldcnskdlcsdklcsklcskdvnslvkndlvnsdklvnsd dsjvkdvnskldvnksdlvnklsdvnsldv",
+        "image":"...",
+        "stock":"4",
+        "onDiscount":"false",
+        "discount": "undefined"
+    },
+    
+    {
+        "id":2,
+        "title":"Oat Milk",
+        "Brand":"Oat-ly",
+        "price":"16",
+        "category":"Vegetable Milk",
+        "description":"jsskllcskdvnslvkndlvnsdklvnsd dsjvkdvnskldvnksdlvnklsdvnsldv",
+        "image":"...",
+        "stock":"7",
+        "onDiscount":"false",
+        "discount": "undefined"
+    }
+]

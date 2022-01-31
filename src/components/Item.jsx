@@ -1,33 +1,23 @@
 import React, {useState, useEffect} from 'react';
 import '../App.css';
+import { useNavigate } from 'react-router-dom';
 
 const Item = (props) => {
+    let navigate = useNavigate();
 
-    const [itemsQty, setItemsQty] = useState(0);
-
-    const decrementer = () => {
-        if (itemsQty > 0) {
-            setItemsQty ((prev) => prev - 1)
-        };
-    };
-
-    const incrementer = () => {
-        if (itemsQty < props.stock) {
-            setItemsQty ((prev) => prev + 1)
-        };
+    const goToProductDetailPage = (event) => {
+        event.stopPropagation();
+        navigate(`products/${props.id}`)
     };
 
     return (
         <div className='item-container'>
-            <img src={props.productPictureURL} alt={props.productName} />
-            <h2 className='item-name'>{props.productName}</h2>
-            <p className='product-description'>{props.productDescription}</p>
-            <p className='product-stock'>Only {props.stock} left!</p>
-            <p className='product-price'>$ {props.productPrice}</p>
-            <div className='counter-div'>
-                <button className='substract-button' onClick={decrementer}>-</button>
-                <p className='counter'>{itemsQty}</p>
-                <button className='add-button' onClick={incrementer}>+</button>
+            <div onClick={goToProductDetailPage}>
+                <img src={props.image} alt={props.title} />
+                <h2 className='item-name'>{props.title}</h2>
+                <p className='product-description'>{props.description}</p>
+                <p className='product-stock'>Only {props.stock} left!</p>
+                <p className='product-price'>$ {props.price}</p>
             </div>
             <button className='add-to-cart-btn'>Add to cart</button>
         </div>
