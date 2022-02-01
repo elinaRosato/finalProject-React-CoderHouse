@@ -6,6 +6,7 @@ const ItemDetail = ({ product }) => {
 
     const { id, title, description, price, stock, image} = product
     const [itemsQty, setItemsQty] = useState(0);
+    console.log(product)
 
     return (
         <div className="product-detail-container">

@@ -4,7 +4,6 @@ import ItemDetail from '../components/ItemDetail';
 
 const ItemDetailContainer = () => {
     const { id } = useParams();
-    const [setLoading] = useOutletContext();
     const [products, setProducts] = useState([
         {id:1, title:"avena", description:"avena arrollada organica glutenfree", price:41, stock:4, image:'./behance_1.jpg'},
         {id:2, title:"leche de almendras", description:"leche vegetal 100% natural", price:35, stock:10, image:'.../behance_1.jpg'},
@@ -20,15 +19,11 @@ const ItemDetailContainer = () => {
 
     useEffect(() => {
         let mounted = true
-        setLoading(true)
         Promise.all([ getItem(id) ])
         .then(results => {
             let item = results[0]
             if (mounted) {
                 setProduct(item)
-                setTimeout(() => {
-                    setLoading(false)
-                }, 1000)
             }
         })
         return () => mounted = false

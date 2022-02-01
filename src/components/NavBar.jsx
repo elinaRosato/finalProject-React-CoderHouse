@@ -9,7 +9,7 @@ import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 const NavBar = () => {
     return (
         <div className='header'>
-            <img className='App-logo' src={logo} alt="Naturli Logo" />
+            <Link to="/"><img className='App-logo' src={logo} alt="Naturli Logo" /></Link>
             <nav>
                 <ul className='nav-bar'>
                     <li className='nav-item'>
@@ -20,7 +20,7 @@ const NavBar = () => {
                     </li>
                     <li className='nav-item'><Link to="/">Home</Link></li>
                     <li className='nav-item'>Recipes</li>
-                    <li className='nav-item'>Shop</li>
+                    <li className='nav-item'><Link to="/">Shop</Link></li>
                     <li className='nav-item'>FAQ</li>
                     <li className='nav-item'>Contact</li>
                     <li className='nav-item'>Find us</li>

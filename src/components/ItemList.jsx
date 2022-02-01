@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Item from './Item';
 import '../App.css';
 
-const ItemList = () => {
+const ItemList = (props) => {
     
     const [products, setProducts] = useState([
         {id:1, title:"avena", description:"avena arrollada organica glutenfree", price:41, stock:4, image:'./behance_1.jpg'},
