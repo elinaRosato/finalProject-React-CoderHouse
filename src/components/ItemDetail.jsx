@@ -1,12 +1,21 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 import ItemCount from './elements/ItemCount';
+import '../App.css';
+
 
 const ItemDetail = ({ product }) => {
 
     const { id, title, description, price, stock, image} = product
     const [itemsQty, setItemsQty] = useState(0);
     console.log(product)
+
+    const [cartItems, setCartItems] = useState([])
+    const { addItem } = (product, itemsQty) => {
+        product.itemsQty = itemsQty
+        setCartItems([...cartItems, product])
+        setItemsQty(1)
+    };
 
     return (
         <div className="product-detail-container">
@@ -31,7 +40,9 @@ const ItemDetail = ({ product }) => {
                     <div>
                         <ItemCount itemsQty={itemsQty} stock={stock} setItemsQty={setItemsQty} />
                     </div>
-                    <button variant="primary">Agregar al carrito</button>
+                    <button onClick={() => addItem(product, itemsQty)} variant="primary">
+                        <Link to="/cart" className="btn btn-link">Agregar al carrito</Link>
+                    </button>
                 </div>
             </div>
         </div>

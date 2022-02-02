@@ -85,3 +85,20 @@
 .item-container {
 width: 25%;
 }
+
+.product-detail-body {
+  width: 90%;
+  display: flex;
+}
+
+.product-info {
+  flex: 1;
+}
+
+.product-image {
+  height: 300;
+}
+
+.product-payment-details {
+  flex: 1;
+}
