@@ -1,12 +1,20 @@
-import '../App.css';
-import ItemListContainer from '../components/ItemListContainer';
+import Heading from '../components/styled/Heading.styeled';
+import Container from '../components/styled/Container.styled';
+import BackgroundDiv from '../components/styled/BackgroundDiv.styled';
 
 function Home() {
     
     return (
-        <div className="container">
-            <ItemListContainer greeting="Welcome to my first e-commerce!" />
+        <Container>
+				<BackgroundDiv />
+				<div>
+            <p>search bar, filters, sort</p>
         </div>
+				<Heading>
+					HOME PAGE. Coming soon...
+				</Heading>
+    
+			</Container>
     );
 }
 

@@ -1,6 +1,9 @@
 import { useOutletContext, useParams } from "react-router-dom";
 import { useEffect, useState } from 'react';
-import ItemDetail from '../components/ItemDetail';
+import { ItemDetail } from '../../components';
+import Heading from "../styled/Heading.styeled";
+import Container from '../styled/Container.styled';
+import BackgroundDiv from '../styled/BackgroundDiv.styled';
 
 const ItemDetailContainer = () => {
     const { id } = useParams();
@@ -30,9 +33,19 @@ const ItemDetailContainer = () => {
     }, [id]);
 
     return (
-        <div className="item-detail-container">
-            {product ? <ItemDetail product={product} /> : null }
+      <Container>
+				<BackgroundDiv />
+				<div>
+            <p>search bar, filters, sort</p>
         </div>
+				<Heading>
+					Product Detail
+				</Heading>
+        <div className="item-detail-container">
+          {product ? <ItemDetail product={product} /> : null }
+        </div>
+			</Container>
+        
     )
 }
 
