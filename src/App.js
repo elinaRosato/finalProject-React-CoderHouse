@@ -1,9 +1,8 @@
-import './App.css';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyles from './components/styled/Global';
 
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import NavBar from './components/elements/NavBar';
+import {Router, Routes, Route} from 'react-router-dom';
+import { NavBar } from './components';
 // Pages imports
 import Home from './pages/Home';
 import Cart from "./pages/Cart";
@@ -41,6 +40,7 @@ function App() {
           <Route path="/shop/products/:id" element={<ItemDetailContainer />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>
+
       </Router>
     </ThemeProvider>
     </>
