@@ -1,8 +1,12 @@
 import { ThemeProvider } from 'styled-components';
 import GlobalStyles from './components/styled/Global';
 
-import {Router, Routes, Route} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 import { NavBar } from './components';
+
+// Context imports
+import ProductsProvider from './context/ProductsContext';
+
 // Pages imports
 import Home from './pages/Home';
 import Cart from "./pages/Cart";
@@ -27,21 +31,19 @@ function App() {
   return ( 
     <>
     <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <Router>
-        <NavBar />
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/recipes" element={<Recipes />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/shop/products/:id" element={<ItemDetailContainer />} />
-          <Route path="/cart" element={<Cart />} />
-        </Routes>
-
-      </Router>
+      <ProductsProvider>
+        <GlobalStyles />
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/recipes" element={<Recipes />} />
+            <Route path="/shop" element={<Shop />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/shop/products/:id" element={<ItemDetailContainer />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+      </ProductsProvider>
     </ThemeProvider>
     </>
   );

@@ -11,14 +11,12 @@ const Item = ({id, title, description, price, stock, image}) => {
     };
 
     return (
-        <CardContainer>
-            <div onClick={goToProductDetailPage}>
+        <CardContainer onClick={goToProductDetailPage}>
                 <img src={image} alt={title} />
                 <h2 className='item-name'>{title}</h2>
                 <p className='product-description'>{description}</p>
                 <p className='product-stock'>Only {stock} left!</p>
                 <p className='product-price'>$ {price}</p>
-            </div>
             <button className='add-to-cart-btn'>Add to cart</button>
         </CardContainer>
     );
