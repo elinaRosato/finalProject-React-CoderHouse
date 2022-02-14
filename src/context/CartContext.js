@@ -5,23 +5,17 @@ const CartContext = React.createContext();
 
 //Costum Hook
 export function useCart() {
-  return useContext(CartContext)
+  return useContext(CartContext);
 }
-const [cart, setCart] = useState({})
-
-export const handlerAddToCart = async (product, qty) => {
-    product.qty = qty
-    setCart([...cart, product])
-  }
 
 //Create CartProvider Component -> Cleaner way of using <CartContext.Provider>
 const CartProvider = ( {children} ) => {
     
-    const cartItems = () => {
-        return cart.length
-    }
+  const [cart, setCart] = useState([]);
+
+
   return (
-		<CartContext.Provider value={cart} >
+		<CartContext.Provider value={[cart, setCart]} >
 			{ children }
 		</CartContext.Provider>
 	);

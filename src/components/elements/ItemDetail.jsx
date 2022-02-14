@@ -2,20 +2,17 @@ import { Link } from "react-router-dom";
 import { useState } from 'react';
 import { ItemCount } from '../../components';
 import CardContainer from "../styled/CardContainer.styled";
-
+import { useCart } from "../../context/CartContext";
 
 const ItemDetail = ({ product }) => {
 
     const { id, title, description, price, stock, image} = product
-    const [itemsQty, setItemsQty] = useState(0);
-    console.log(product)
-
-    const [cartItems, setCartItems] = useState([])
-    const { addItem } = (product, itemsQty) => {
-        product.itemsQty = itemsQty
-        setCartItems([...cartItems, product])
-        setItemsQty(1)
-    };
+	const [qty, setQty] = useState(0);
+	const [cart, setCart] = useCart();
+	const addToCart = (product, qty) => {
+		product.qty =  qty
+		setCart([...cart, product])
+	};
 
     return (
 			<CardContainer>
@@ -39,10 +36,10 @@ const ItemDetail = ({ product }) => {
 							<h2 className="product-price">$ {price}</h2>                              
 							<label for="quant">Cantidad</label>
 							<div>
-								<ItemCount itemsQty={itemsQty} stock={stock} setItemsQty={setItemsQty} />
+								<ItemCount stock={stock} qty={qty} setQty={setQty} />
 							</div>
-							<button onClick={() => addItem(product, itemsQty)} variant="primary">
-								<Link to="/cart" className="btn btn-link">Agregar al carrito</Link>
+							<button onClick={() => addToCart(product, qty)} variant="primary">
+								Agregar al carrito
 							</button>
 						</div>
 					</div>

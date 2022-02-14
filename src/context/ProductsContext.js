@@ -3,9 +3,17 @@ import React, {createContext, useContext, useState} from 'react';
 //Create Products Context
 const ProductsContext = React.createContext();
 
-//Costum Hook
+//Use Products - Costum Hook
 export function useProducts() {
   return useContext(ProductsContext)
+}
+
+//Get Products from id - Costum Hook
+export function useProductWithId (id) {
+	const products = useProducts();
+	return (
+		products.find(product => product.id == id)
+	)
 }
 
 //Create ProductsProvider Component -> Cleaner way of using <ProductsContext.Provider>
@@ -26,3 +34,4 @@ const ProductsProvider = ( {children} ) => {
 };
 
 export default ProductsProvider;
+

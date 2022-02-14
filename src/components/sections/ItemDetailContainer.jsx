@@ -4,23 +4,12 @@ import { ItemDetail } from '../../components';
 import Heading from "../styled/Heading.styeled";
 import Container from '../styled/Container.styled';
 import BackgroundDiv from '../styled/BackgroundDiv.styled';
-import { useProducts } from "../../context/ProductsContext";
+import { useProductWithId } from "../../context/ProductsContext";
 
 const ItemDetailContainer = () => {
     //Setting the route
     const { id } = useParams();
-
-    console.log(id)
-
-    //Importing Products from Products Context
-    const products = useProducts();
-
-    console.log(products)
-
-    //Getting the target product
-    const product = products.filter(product => product.id === id);
-    
-    console.log(product)
+    const product = useProductWithId (id);
 
     return (
       <Container>

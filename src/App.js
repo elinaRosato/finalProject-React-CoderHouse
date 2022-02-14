@@ -15,6 +15,7 @@ import Shop from "./pages/Shop";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import ItemDetailContainer from './components/sections/ItemDetailContainer';
+import CartProvider from './context/CartContext';
 
 const theme = {
   colors: {
@@ -32,7 +33,8 @@ function App() {
     <>
     <ThemeProvider theme={theme}>
       <ProductsProvider>
-        <GlobalStyles />
+        <CartProvider>
+          <GlobalStyles />
           <NavBar />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -43,6 +45,7 @@ function App() {
             <Route path="/shop/products/:id" element={<ItemDetailContainer />} />
             <Route path="/cart" element={<Cart />} />
           </Routes>
+        </CartProvider>
       </ProductsProvider>
     </ThemeProvider>
     </>
