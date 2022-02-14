@@ -6,7 +6,6 @@ import { useCart } from '../../context/CartContext';
 const CartCounter = ({id, stock, originalQty}) => {
     const [qty, setQty] = useState(originalQty);
     const [cart, setCart] = useCart(); 
-	console.log(id)
     const decrementer = () => {
 			if (qty > 0) {
 					setQty ((prev) => prev - 1);
