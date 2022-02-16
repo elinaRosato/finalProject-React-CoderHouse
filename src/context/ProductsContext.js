@@ -28,13 +28,16 @@ const ProductsProvider = ( {children} ) => {
 			const query = collection(db, "products"); //gets "products" collection from db database
 			const snapshot = await getDocs( query ); //gets data from query ("products" collection)
 			// firebase doesn't support .map => use .forEach instead
+			const productList = [];
 			snapshot.forEach(doc => {
-				//ues doc.data() to get the object with data and doc.id to get the id of the product
+				//use doc.data() to get the object with data and doc.id to get the id of the product
 				console.log(doc.id);
 				console.log(doc.data());
-				setProducts( [...products, {id: doc.id, ...doc.data()}])
-				console.log(products)
+
+				productList.push({id: doc.id, ...doc.data()});
 			})
+			setProducts(productList);
+				console.log(products)
 		}
 		getFromFirebase();
 	}, []);
@@ -45,7 +48,7 @@ const ProductsProvider = ( {children} ) => {
 	const q = query(collection(db, "products"), where("category","===","oat drink")); 
 	const snapshot = await getDocs( q ); 
 	
-	  To filter products by id:
+	To filter products by id:
 	import { getDoc, doc } from "firebase/firestore";
 	const docRef = doc(db, "products", "xV86jmuzLWub7ZpCnWiJ")
 	const docSnapshot = await getDoc(docRef)
