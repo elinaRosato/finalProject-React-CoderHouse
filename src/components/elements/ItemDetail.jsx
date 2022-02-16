@@ -10,8 +10,16 @@ const ItemDetail = ({ product }) => {
 	const [qty, setQty] = useState(0);
 	const [cart, setCart] = useCart();
 	const addToCart = (product, qty) => {
-		product.qty =  qty
-		setCart([...cart, product])
+		const productIndex = cart.indexOf(product);
+		console.log(productIndex)
+		if (productIndex===-1) {
+			product.qty =  qty;
+			setCart([...cart, product]);
+		} else {
+			cart[productIndex].qty= cart[productIndex].qty + qty
+			setCart(cart);
+		}
+		
 	};
 
     return (

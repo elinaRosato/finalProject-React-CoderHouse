@@ -1,11 +1,11 @@
 import { IconButton, Badge } from '@material-ui/core';
 import { useState } from 'react';
-import { useCart } from "../../context/CartContext";
+import { useItemsInCart } from "../../context/CartContext";
 
 
 const CartWidget = () => {
-    const [cart, setCart] = useCart();
-    const itemsInCart = cart.reduce((acc, curr) => acc + curr.qty, 0);
+    
+    const itemsInCart = useItemsInCart();
 
 
     // items.length

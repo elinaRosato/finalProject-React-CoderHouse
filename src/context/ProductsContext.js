@@ -30,14 +30,9 @@ const ProductsProvider = ( {children} ) => {
 			// firebase doesn't support .map => use .forEach instead
 			const productList = [];
 			snapshot.forEach(doc => {
-				//use doc.data() to get the object with data and doc.id to get the id of the product
-				console.log(doc.id);
-				console.log(doc.data());
-
 				productList.push({id: doc.id, ...doc.data()});
 			})
 			setProducts(productList);
-				console.log(products)
 		}
 		getFromFirebase();
 	}, []);

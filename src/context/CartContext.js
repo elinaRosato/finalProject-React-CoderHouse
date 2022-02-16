@@ -8,6 +8,14 @@ export function useCart() {
   return useContext(CartContext);
 }
 
+export function useItemsInCart() {
+	const [cart, setCart] = useContext(CartContext);
+	return (
+		cart.reduce((acc, curr) => acc + curr.qty, 0)
+	)
+}
+
+
 //Create CartProvider Component -> Cleaner way of using <CartContext.Provider>
 const CartProvider = ( {children} ) => {
     

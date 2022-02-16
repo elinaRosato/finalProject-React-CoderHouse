@@ -15,6 +15,7 @@ import Shop from "./pages/Shop";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import ItemDetailContainer from './components/sections/ItemDetailContainer';
+import AddProduct from './components/sections/AddProduct';
 import CartProvider from './context/CartContext';
 
 const theme = {
@@ -44,6 +45,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/shop/products/:id" element={<ItemDetailContainer />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/admin" element={<AddProduct />} />
           </Routes>
         </CartProvider>
       </ProductsProvider>
