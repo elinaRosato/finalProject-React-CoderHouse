@@ -10,7 +10,7 @@ import Container from '../styled/Container.styled';
 
 
 const NavBar = () => {
-	return (
+  return (
 		<Container>	
 			<ContainerFlex>
 				<Link to="/" style={{ textDecoration: 'none' }}>
@@ -22,7 +22,7 @@ const NavBar = () => {
 				</Link>
 			</ContainerFlex>
 		</Container>
-	);
-}
+	)
+};
 
 export default NavBar; 

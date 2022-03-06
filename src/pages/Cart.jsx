@@ -13,7 +13,7 @@ import { useCart } from '../context/CartContext';
 import  CartCounter from '../components/elements/CartCounter';
 
 //Styled Components
-import { Heading, Subheading, SmallText, NormalText, ImportantText, Padding} from '../components/styled/Heading.styeled';
+import { Heading, Subheading, SmallText, NormalText, ImportantText, Padding} from '../components/styled/Typography.styeled';
 import Container from '../components/styled/Container.styled';
 import ContainerFlex from '../components/styled/ContainerFlex.styled';
 import BackgroundDiv from '../components/styled/BackgroundDiv.styled';

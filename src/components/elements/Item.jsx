@@ -20,7 +20,7 @@ const Item = ({id, title, description, price, stock, image}) => {
 			<CardPrice>€ {price}</CardPrice>
 			<CardBtn>View More</CardBtn>
 		</CardContainer>
-	);
-}
+	)
+};
 
 export default Item;

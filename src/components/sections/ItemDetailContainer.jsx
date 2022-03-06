@@ -1,27 +1,33 @@
+import React from 'react';
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from 'react';
-import { ItemDetail } from '../../components';
-import {Heading} from "../styled/Heading.styeled";
-import Container from '../styled/Container.styled';
-import BackgroundDiv from '../styled/BackgroundDiv.styled';
+
+// Contexts
 import { useProductWithId } from "../../context/ProductsContext";
 
-const ItemDetailContainer = () => {
-    //Setting the route
-    const { id } = useParams();
-    const product = useProductWithId (id);
+// Components
+import { ItemDetail } from '../../components';
 
-    return (
-      <Container>
-				<BackgroundDiv />
-				<Heading>
-					Product Detail
-				</Heading>
-        <div className="item-detail-container">
-          {product ? <ItemDetail product={product} /> : null }
-        </div>
-			</Container>
-    )
-}
+// Styled Components
+import { Heading } from "../styled/Typography.styeled";
+import Container from '../styled/Container.styled';
+import BackgroundDiv from '../styled/BackgroundDiv.styled';
+
+const ItemDetailContainer = () => {
+  //Setting the route
+  const { id } = useParams();
+  const product = useProductWithId (id);
+
+  return (
+    <Container>
+      <BackgroundDiv />
+      <Heading>
+        Product Detail
+      </Heading>
+      <div className="item-detail-container">
+        {product ? <ItemDetail product={product} /> : null }
+      </div>
+    </Container>
+  )
+};
 
 export default ItemDetailContainer;

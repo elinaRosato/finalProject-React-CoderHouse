@@ -1,5 +1,7 @@
 import React from 'react';
-import {Heading} from '../components/styled/Heading.styeled';
+
+// Styled Components
+import { Heading } from '../components/styled/Typography.styeled';
 import Container from '../components/styled/Container.styled';
 import BackgroundDiv from '../components/styled/BackgroundDiv.styled';
 

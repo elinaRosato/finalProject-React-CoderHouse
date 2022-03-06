@@ -1,8 +1,12 @@
 import React from 'react';
-import {Heading} from '../components/styled/Heading.styeled';
+
+// Components
+import ItemList from '../components/elements/ItemList';
+
+// Styled Components
+import { Heading } from '../components/styled/Typography.styeled';
 import Container from '../components/styled/Container.styled';
 import BackgroundDiv from '../components/styled/BackgroundDiv.styled';
-import ItemList from '../components/elements/ItemList';
 
 
 const Home = () => {

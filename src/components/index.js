@@ -7,7 +7,6 @@ export { default as ItemCount } from './elements/ItemCount';
 export { default as Item } from './elements/Item';
 export { default as CartWidget } from './elements/CartWidget';
 export { default as MenuDesktop } from './elements/MenuDesktop';
-export { default as ColorPalette } from './elements/ColorPalette';
 
 // SECTIONS
 export { default as ItemDetailContainer } from './sections/ItemDetailContainer';

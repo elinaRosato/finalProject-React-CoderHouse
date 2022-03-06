@@ -1,14 +1,12 @@
+import React from 'react';
 import { IconButton, Badge } from '@material-ui/core';
-import { useState } from 'react';
+
+// ContextsA
 import { useCart } from "../../context/CartContext";
 
-
 const CartWidget = () => {
+  const itemsInCart = useCart()[2];
 
-	const itemsInCart = useCart()[2];
-	console.log(itemsInCart)
-
-	// items.length
 	return (
 		<IconButton>
 			<Badge badgeContent={itemsInCart}>
@@ -16,6 +14,6 @@ const CartWidget = () => {
 			</Badge>
 		</IconButton>
 	)
-}
+};
 
 export default CartWidget;

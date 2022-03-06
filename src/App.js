@@ -11,7 +11,8 @@ import Cart from "./pages/Cart";
 import About from "./pages/About";
 import ItemDetailContainer from './components/sections/ItemDetailContainer';
 import AddProduct from './components/sections/AddProduct';
-import { NavBar, ColorPalette } from './components';
+import { NavBar } from './components';
+import ColorPalette from './components/elements/ColorPalette'
 
 // Styled Components
 import GlobalStyles from './components/styled/Global';
