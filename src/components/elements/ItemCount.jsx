@@ -1,6 +1,7 @@
 import React from 'react';
-import { useState } from 'react';
-import { Grid } from '@material-ui/core';
+
+//Styled Components
+import { CounterContainer, CounterBtn, CounterQty } from '../styled/Counter.styled';
 
 const ItemCount = ({stock, qty, setQty}) => {
 
@@ -16,20 +17,12 @@ const ItemCount = ({stock, qty, setQty}) => {
 			};
 	};
 
-	return (
-		<div>
-				<Grid container>
-					<Grid item>
-						<button className='substract-button' onClick={decrementer}>-</button>
-					</Grid>
-					<Grid item>
-						<p className='counter'>{qty}</p>
-					</Grid>
-					<Grid item>
-						<button className='add-button' onClick={incrementer}>+</button>
-					</Grid>
-				</Grid>
-		</div>
+  return (
+	<CounterContainer>
+		<CounterBtn onClick={decrementer}>-</CounterBtn>
+		<CounterQty>{qty}</CounterQty>
+		<CounterBtn onClick={incrementer}>+</CounterBtn>
+	</CounterContainer>
 	)
 };
 

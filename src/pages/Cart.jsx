@@ -1,33 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
-
-import Heading from '../components/styled/Heading.styeled';
-import Container from '../components/styled/Container.styled';
-import BackgroundDiv from '../components/styled/BackgroundDiv.styled';
-import { useCart } from '../context/CartContext';
 import { Grid } from '@material-ui/core';
-import  CartCounter from '../components/elements/CartCounter';
+
+//Firebase
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../firebase';
-import { Button } from 'react-bootstrap';
+
+//Contexts
+import { useCart } from '../context/CartContext';
+
+//Components
+import  CartCounter from '../components/elements/CartCounter';
+
+//Styled Components
+import { Heading, Subheading, SmallText, NormalText, ImportantText, Padding} from '../components/styled/Heading.styeled';
+import Container from '../components/styled/Container.styled';
+import ContainerFlex from '../components/styled/ContainerFlex.styled';
+import BackgroundDiv from '../components/styled/BackgroundDiv.styled';
+import { Button, CartImage } from '../components/styled/Cart.styled';
 
 
 
 const Cart = () => {
-	const [cart, setCart]  = useCart();
-	const totalPrice = cart.reduce((acc, curr) => acc + curr.price*curr.qty, 0);
+	const cart  = useCart()[0];
+	const totalPrice = useCart()[3];
+	console.log(totalPrice)
+
 
 	const isEmpty = cart.length===0
 	const [ success, setSuccess ] = useState(false);
-    const [orderId, setOrderId] = useState("");
+  const [orderId, setOrderId] = useState("");
 
 	// {buyer: {name, phone, email}, products: { {id, title, price}, total}}
 	const checkout = () => {
-		if (isEmpty) {
-			alert("No tienes productos en el carrito")
-			return
-		}
 		const productsToBuy = cart.map (product => {
 			return {
 				id: product.id,
@@ -56,12 +61,15 @@ const Cart = () => {
 			console.log(error)
 		})
 	}
-	
 
 	const EmptyCart = () => {
 		return (
 			<Container style={{backgroundColor: "white"}}>
+
+				<Button>Continue shopping</Button>
 				<p>Your cart is empty</p>
+				<p>Looks like you haven't added anything to your cart yet</p>
+				<p></p>
 			</Container>		)
 	};
 
@@ -71,27 +79,28 @@ const Cart = () => {
 				<Grid container >
 					<Grid item xs={12} md={9}>
 						<Container style={{backgroundColor: "white"}}>
+							<Subheading>My Cart</Subheading>
 							<Grid container spacing={2}>
 								{cart.map(product => {
 									return (
 										<Grid item xs={12} key={product.id}>
 											<Container>
 												<Grid container spacing={1}>
-													<Grid item xs={6} style={{backgroundColor: "orange"}}>
+													<Grid item xs={6} style={{alignSelf: 'center'}}>
 														<Grid container>
 															<Grid item xs={12} md={6}>
-																<img src={product.image} />
+																<CartImage src={product.imagesURL[0]} style={{ alignSelf: 'center'}}/>
 															</Grid>
-															<Grid item xs={12} md={6}>
-																<p>{product.title}</p>
+															<Grid item xs={12} md={6} style={{ alignSelf: 'center'}}>
+																<NormalText>{product.title}</NormalText>
 															</Grid>
 														</Grid>
 													</Grid>
-													<Grid item xs={3} style={{backgroundColor: "yellow"}}>
+													<Grid item xs={3} style={{alignSelf: 'center'}}>
 														<CartCounter id={product.id} stock={product.stock} originalQty={product.qty} />
 													</Grid>
-													<Grid item xs={3} style={{backgroundColor: "red"}}>
-														<p>{product.price}</p>
+													<Grid item xs={3} style={{alignSelf: 'center'}}>
+														<NormalText>{product.price}</NormalText>
 													</Grid>
 												</Grid>
 											</Container>
@@ -102,10 +111,32 @@ const Cart = () => {
 						</Container>
 					</Grid>
 					<Grid item xs={12} md={3}>
-						<Container style={{backgroundColor: "red"}}>
-							<p>Subtotal</p>
-							<p>$ {totalPrice}</p>
-							<button onClick={checkout}>Checkout</button>
+						<Container style={{backgroundColor: "red", height: '100%'}}>
+							<Subheading>Order Summary</Subheading>
+							<Padding />
+							<SmallText>Items: {3}</SmallText>
+							<Padding />
+							<ContainerFlex style={{justifyContent: 'space-between'}}>
+								<NormalText>Subtotal:</NormalText>
+								<NormalText>{totalPrice}</NormalText>
+							</ContainerFlex>
+							<Padding />
+							<ContainerFlex style={{justifyContent: 'space-between'}}>
+								<NormalText>Shipping Cost:</NormalText>
+								<NormalText>EUR 15</NormalText>
+							</ContainerFlex>
+							<Padding />
+							<ContainerFlex style={{justifyContent: 'space-between'}}>
+								<NormalText>Tax:</NormalText>
+								<NormalText>{totalPrice*0.21}</NormalText>
+							</ContainerFlex>
+							<Padding />
+							<ContainerFlex style={{justifyContent: 'space-between'}}>
+								<ImportantText>Total:</ImportantText>
+								<ImportantText>{totalPrice*1.21+15}</ImportantText>
+							</ContainerFlex>
+							<Padding />
+							<Button onClick={checkout}>Checkout</Button>
 						</Container>
 					</Grid>
 				</Grid>
@@ -133,18 +164,15 @@ const Cart = () => {
 	};
 
 	
-    return (
-    <Container>
-				<BackgroundDiv />
-
-				<Heading>
-					Shopping Cart
-				</Heading>
-
-				{isEmpty ? <EmptyCart /> : <FilledCart />}
-    
-			</Container>
-);
+	return (
+		<Container>
+			<BackgroundDiv />
+			<Heading>
+				Shopping Cart
+			</Heading>
+			{isEmpty ? <EmptyCart /> : <FilledCart />}
+		</Container>
+	);
 };
 
 export default Cart;

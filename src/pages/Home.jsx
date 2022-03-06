@@ -1,22 +1,19 @@
 import React from 'react';
-import Heading from '../components/styled/Heading.styeled';
+import {Heading} from '../components/styled/Heading.styeled';
 import Container from '../components/styled/Container.styled';
 import BackgroundDiv from '../components/styled/BackgroundDiv.styled';
+import ItemList from '../components/elements/ItemList';
 
 
-function Home() {
-
-    return (
-        <Container>
-				<BackgroundDiv />
-				<div>
-            <p>search bar, filters, sort</p>
-        </div>
-				<Heading>
-					HOME PAGE. Coming soon...
-				</Heading>
-    
-			</Container>
+const Home = () => {
+  return (
+		<Container>
+			<BackgroundDiv />
+			<Heading>
+				Shop
+			</Heading>
+			<ItemList />
+		</Container>
     );
 }
 

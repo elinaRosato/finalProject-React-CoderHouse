@@ -1,25 +1,26 @@
 import React, {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
-import CardContainer from '../styled/CardContainer.styled';
+
+// Styled Components
+import { CardContainer, CardImage, CardTitle, CardPrice, CardBtn } from "../styled/ItemList.styled";
+
 
 const Item = ({id, title, description, price, stock, image}) => {
-    let navigate = useNavigate();
+  let navigate = useNavigate();
 
-    const goToProductDetailPage = (event) => {
-        event.stopPropagation();
-        navigate(`products/${id}`)
-    };
+	const goToProductDetailPage = (event) => {
+		event.stopPropagation();
+		navigate(`products/${id}`)
+	};
 
-    return (
-        <CardContainer onClick={goToProductDetailPage}>
-                <img src={image} alt={title} />
-                <h2 className='item-name'>{title}</h2>
-                <p className='product-description'>{description}</p>
-                <p className='product-stock'>Only {stock} left!</p>
-                <p className='product-price'>$ {price}</p>
-            <button className='add-to-cart-btn'>Add to cart</button>
-        </CardContainer>
-    );
+	return (
+		<CardContainer onClick={goToProductDetailPage}>
+			<CardImage src={image} alt={title} />
+			<CardTitle>{title}</CardTitle>
+			<CardPrice>€ {price}</CardPrice>
+			<CardBtn>View More</CardBtn>
+		</CardContainer>
+	);
 }
 
 export default Item;

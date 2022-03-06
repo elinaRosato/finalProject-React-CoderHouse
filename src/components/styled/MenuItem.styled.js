@@ -2,12 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 const MenuItem = styled.li `
-    text-decoration: none;
+    color: ${({theme}) => theme.colors.dark};
     list-style: none;
-    font-size: 30px;
-    font-weight: 900;
+    font-size: 2rem;
+    font-weight: 300;
     text-align: center;
-    padding: 3rem 0;
     margin: 0 2rem;
 `
 

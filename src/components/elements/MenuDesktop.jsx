@@ -8,18 +8,16 @@ const MenuDesktop = () => {
   return (
 		<>
 			<ContainerFlex>
-				<MenuItem>
-					<Link to="/">Home</Link>
-				</MenuItem>
-				<MenuItem>
-					<Link to="/shop">Shop</Link>
-				</MenuItem>
-				<MenuItem>
-					<Link to="/recipes">Recipes</Link>
-				</MenuItem>
-				<MenuItem>
-					<Link to="/about">About</Link>
-				</MenuItem>
+				<Link to="/" style={{ textDecoration: 'none' }}>
+					<MenuItem>
+						Home
+					</MenuItem>
+				</Link>
+				<Link to="/about" style={{ textDecoration: 'none' }}>
+					<MenuItem>
+						About
+					</MenuItem>
+				</Link>
 			</ContainerFlex>
   	</>);
 };

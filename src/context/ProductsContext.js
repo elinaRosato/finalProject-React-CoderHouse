@@ -7,7 +7,7 @@ const ProductsContext = React.createContext();
 
 //Use Products - Costum Hook
 export function useProducts() {
-  return useContext(ProductsContext)
+    return useContext(ProductsContext)
 }
 
 //Get Products from id - Costum Hook

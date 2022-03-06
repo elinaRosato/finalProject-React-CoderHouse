@@ -1,58 +1,64 @@
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-import { useState } from 'react';
-import { ItemCount } from '../../components';
-import CardContainer from "../styled/CardContainer.styled";
+
+//Contexts
 import { useCart } from "../../context/CartContext";
 
-const ItemDetail = ({ product }) => {
+//Components
+import { ItemCount } from '../../components';
 
-    const { id, title, description, price, stock, image} = product
+//Styled Components
+import { Grid } from '@material-ui/core';
+import { DetailCardContainer, DetailCardImage, DetailCardBrand, Accent, DetailCardTitle, DetailCardDescription, DetailCardStock, DetailCardPrice, DetailCardBtn, DetailCardMenu, BackBtn } from "../styled/ItemDetail.styled";
+
+
+const ItemDetail = ({ product }) => {
+    const { brand, category, description, id, imagesURL, price, stock, title} = product
+	const image = imagesURL[0]
 	const [qty, setQty] = useState(0);
-	const [cart, setCart] = useCart();
-	const addToCart = (product, qty) => {
-		const productIndex = cart.indexOf(product);
-		console.log(productIndex)
-		if (productIndex===-1) {
-			product.qty =  qty;
-			setCart([...cart, product]);
-		} else {
-			cart[productIndex].qty= cart[productIndex].qty + qty
-			setCart(cart);
-		}
-		
-	};
+  const addItem = useCart()[1];
+
 
     return (
-			<CardContainer>
+			<DetailCardContainer>
 				<div className="product-detail-container">
-					<div className="product-detail-header">
-						<Link to="/shop" className="btn btn-link">Volver atras</Link>
-					</div>
+					<DetailCardMenu>
+						<Link to="/" style={{textDecoration: 'none'}}>
+							<BackBtn>Back</BackBtn>
+						</Link>
+					</DetailCardMenu>
 					<div className="product-detail-body">
 						<div className="product-info">
-							<div className="product-image">
-								<img src={image} alt="" /> 
-							</div>
-							<div className="product-description" >
-								<h2 className="mb-5">Description</h2>
-								{description}
-							</div>
-						</div>
-						<div className="product-payment-details">
-							<p className="product-stock"><small>Only {stock} left! </small></p>
-							<h4 className="product-title">{title}</h4>
-							<h2 className="product-price">$ {price}</h2>                              
-							<label for="quant">Cantidad</label>
-							<div>
-								<ItemCount stock={stock} qty={qty} setQty={setQty} />
-							</div>
-							<button onClick={() => addToCart(product, qty)} variant="primary">
-								Agregar al carrito
-							</button>
+						<Grid container columnSpacing={4}>
+							<Grid item xs={12} md={6}>
+								<DetailCardImage src={image} alt={title}/>
+							</Grid>
+							<Grid item xs={12} md={6}>
+								<DetailCardBrand>
+									By <Accent>{brand}</Accent>
+								</DetailCardBrand>
+								<DetailCardTitle>{title}</DetailCardTitle>
+								<div className="product-description" >
+									<h2 className="mb-5">Description</h2>
+									<DetailCardDescription>
+										{description}
+									</DetailCardDescription>
+								</div>
+									<DetailCardStock>Only {stock} left! </DetailCardStock>
+									<DetailCardPrice>$ {price}</DetailCardPrice>
+									<div style={{display: 'flex', gap: '2rem'}}>
+										<ItemCount stock={stock} qty={qty} setQty={setQty} />
+										<DetailCardBtn onClick={() => addItem(product, qty)} variant="primary">
+											Add to cart
+										</DetailCardBtn>
+									</div>                              
+									
+							</Grid>
+						</Grid>
 						</div>
 					</div>
 				</div>
-			</CardContainer>
+			</DetailCardContainer>
         
     )
 }

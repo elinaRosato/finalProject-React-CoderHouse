@@ -1,12 +1,20 @@
-import React from 'react';
 import styled from 'styled-components';
 
-
-
-const StyledLogo = styled.p `
-    font-family: 'JetBrains Mono', monospace;
-    font-size: ${({size}) => size};
-    font-weight: 600;
+export const LogoContainer = styled.div `
+    display: flex;
+    align-items: center;
+    gap: .3rem;
 `
 
-export default StyledLogo;
+export const LogoText = styled.p `
+    font-family: 'Fraunces', serif;
+    font-size: 3rem;
+    font-weight: 200;
+    text-decoration: none;
+    color: ${({theme}) => theme.colors.dark};
+`
+
+export const LogoIcon = styled.svg `
+    height: 4rem;
+`
+

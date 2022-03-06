@@ -3,6 +3,10 @@
 *** that would make this better, please fork the repo and create a pull request
 *** or simply open an issue with the tag "enhancement".
 *** Thanks again! :D
+
+oat logo:
+Oat by Edwin PM from NounProject.com
+Bowl by Flatart from NounProject.com
 -->
 
 <!-- PROJECT TITLE -->
