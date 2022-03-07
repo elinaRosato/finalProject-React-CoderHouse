@@ -5,9 +5,6 @@ const ContainerFlex = styled.div `
     display: flex;
     align-items: center;
 
-    border: 2px solid;
-    border-color: ${({theme}) => theme.colors.primary};
-    border-radius: 3rem;
 
     margin: auto;
 `

@@ -37,7 +37,6 @@ function App() {
       <ProductsProvider>
         <CartProvider>
           <GlobalStyles />
-          <ColorPalette />
           <NavBar />
           <Routes>
             <Route path="/" element={<Home />} />

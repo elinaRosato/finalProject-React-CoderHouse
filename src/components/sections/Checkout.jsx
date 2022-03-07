@@ -28,15 +28,17 @@ const Checkout = () => {
 
   const [cart, setCart] = useCart();
 	const totalPrice = useCart()[3];
+	
+	const [firstStepMounted, setFirstStepMounted] = useState(true);
+	const [secondStepMounted, setSecondStepMounted] = useState(false);
 
-    const checkout = (e) => {
+  const checkout = (e) => {
 		e.preventDefault();
 		const name = e.target.elements.name.value;
 		const surname = e.target.elements.surname.value;
 		const phone = e.target.elements.phone.value;
 		const email = e.target.elements.email.value;
 		const emailConf = e.target.elements.emailConf.value;
-
 
 		const orderProducts = cart.map (product => {
 			return {
@@ -59,25 +61,19 @@ const Checkout = () => {
 			products: orderProducts,
 			total: totalPrice
 		}).then(doc => {
-			console.log("se creo el documento con el id",doc.id)
 			setOrderId(doc.id);
 			setSuccess(true);
 		}).catch(error => {
 			console.log(error)
 		})
 
-        setCart([]);
-				setFirstStepMounted(false);
-        setSecondStepMounted(true);
+		//Clear Cart
+		setCart([]);
+
+		//Next Step
+		setFirstStepMounted(false);
+    setSecondStepMounted(true);
 	}
-
-    const [firstStepMounted, setFirstStepMounted] = useState(true);
-    const [secondStepMounted, setSecondStepMounted] = useState(false);
-
-    const toSecondStep = () => {
-        //check the emails are the same if (email1==email2) {...} else {alert: your email doesn't match}
-        
-    }
 
   const FirstStep = () => {
 			return (
@@ -128,7 +124,10 @@ const Checkout = () => {
 		return (
 			<>
 				<Container style={{backgroundColor: "white"}}>
-					<NormalText>Confirmation</NormalText>
+					<Subheading>Your order has been recieved</Subheading>
+					<ImportantText>Thank you for your purchase!</ImportantText>
+					<NormalText>Your order ID is: {orderId}</NormalText>
+					<NormalText>You will recieve an order confirmation email with details of your order</NormalText>
 					<Link to="/" style={{ textDecoration: 'none' }}>
 							<Button onClick={checkout}>Back to Shop</Button>
 					</Link>

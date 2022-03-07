@@ -1,10 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
-
-//Firebase
-import { addDoc, collection } from 'firebase/firestore';
-import { db } from '../firebase';
 
 //Contexts
 import { useCart } from '../context/CartContext';
@@ -24,13 +20,12 @@ import { Button, CartImage } from '../components/styled/Cart.styled';
 const Cart = () => {
 	const cart  = useCart()[0];
 	const subtotalPrice = useCart()[3];
+	const itemsInCart = useCart()[2];
 	const shippingCost = 15;
 	const tax = subtotalPrice*0.21;
 	const totalPrice = subtotalPrice + shippingCost + tax;
 
 	const isEmpty = cart.length===0
-	const [ success, setSuccess ] = useState(false);
-  const [orderId, setOrderId] = useState("");
 
 	const EmptyCart = () => {
 		return (
@@ -82,10 +77,10 @@ const Cart = () => {
 						</Container>
 					</Grid>
 					<Grid item xs={12} md={3}>
-						<Container style={{background: "linear-gradient(#CCFFBD, #7ECA9C)", height: '100%'}}>
+						<Container style={{backgroundColor: "#FB7813", height: '100%', padding: '2rem'}}>
 							<Subheading>Order Summary</Subheading>
 							<Padding />
-							<SmallText>Items: {3}</SmallText>
+							<SmallText>Items: {itemsInCart}</SmallText>
 							<Padding />
 							<ContainerFlex style={{justifyContent: 'space-between'}}>
 								<NormalText>Subtotal:</NormalText>
@@ -113,25 +108,6 @@ const Cart = () => {
 						</Container>
 					</Grid>
 				</Grid>
-				{success ? 
-					<div style={{ 
-						position: "absolute",
-						top: 0,
-						left: 0,
-						width: "100%",
-						height: "100v%",
-						background: "rgb(76 175 80 / 90%)",
-						textAlign: "center",
-						color: "white",
-						paddingTop: "25%"
-					}}>
-						<h1>Tu compra se ha realizado con exito</h1>
-						<p>Puedes hacer seguimiento con el siguiente id {orderId}</p>
-						<Button as={Link} to="/">Seguir comprando</Button>
-					</div>
-				:
-					null
-				}
 			</>
 		)
 	};

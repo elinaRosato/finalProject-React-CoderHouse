@@ -4,8 +4,6 @@ const Container = styled.div `
     width: 95%;
     max-width: 100%;
 
-    border: 2px solid;
-    border-color: ${({theme}) => theme.colors.primary};
     border-radius: 3rem;
 
     padding: 20px;

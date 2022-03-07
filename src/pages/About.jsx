@@ -9,9 +9,6 @@ const About = () => {
     return (
         <Container>
 				<BackgroundDiv />
-				<div>
-            <p>search bar, filters, sort</p>
-        </div>
 				<Heading>
 					About PAGE. Coming soon...
 				</Heading>

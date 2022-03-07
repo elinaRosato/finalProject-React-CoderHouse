@@ -11,7 +11,6 @@ margin: auto;
 
 export const CardImage = styled.img `
     width: 100%;
-    border: solid red 2px;
 `
 
 export const CardTitle = styled.p `

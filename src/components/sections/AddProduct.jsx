@@ -18,6 +18,12 @@ const AddItem = () => {
 		addToFirebase(title, description, price)
 	}
 
+
+
+
+
+
+	
 	const addToFirebase = async (title, description, price) => {
 
 		// Esta es la forma de subir una imagen desde el almacenamiento loc al: 
@@ -50,7 +56,7 @@ const AddItem = () => {
 		.then(docs => {
 			let preCategories = []
 			docs.forEach(doc => {
-					preCategories.push({id: doc.id, ...doc.data()})
+				preCategories.push({id: doc.id, ...doc.data()})
 			})
 			setCategories(preCategories)
 		})
