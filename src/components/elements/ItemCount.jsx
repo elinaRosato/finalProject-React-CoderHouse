@@ -6,15 +6,15 @@ import { CounterContainer, CounterBtn, CounterQty } from '../styled/Counter.styl
 const ItemCount = ({stock, qty, setQty}) => {
 
 	const decrementer = () => {
-			if (qty > 0) {
-					setQty ((prev) => prev - 1)
-			};
+		if (qty > 0) {
+			setQty ((prev) => prev - 1)
+		};
 	};
 
 	const incrementer = () => {
-			if (qty < stock) {
-					setQty ((prev) => prev + 1)
-			};
+		if (qty < stock) {
+			setQty ((prev) => prev + 1)
+		};
 	};
 
   return (

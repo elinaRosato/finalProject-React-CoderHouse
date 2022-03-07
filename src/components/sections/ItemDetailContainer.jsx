@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { useProductWithId } from "../../context/ProductsContext";
 
 // Components
-import { ItemDetail } from '../../components';
+import ItemDetail from '../../components/elements/ItemDetail';
 
 // Styled Components
 import { Heading } from "../styled/Typography.styeled";

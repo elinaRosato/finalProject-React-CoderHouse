@@ -11,8 +11,9 @@ import Cart from "./pages/Cart";
 import About from "./pages/About";
 import ItemDetailContainer from './components/sections/ItemDetailContainer';
 import AddProduct from './components/sections/AddProduct';
-import { NavBar } from './components';
+import NavBar from './components/elements/NavBar';
 import ColorPalette from './components/elements/ColorPalette'
+import Checkout from './components/sections/Checkout'
 
 // Styled Components
 import GlobalStyles from './components/styled/Global';
@@ -43,6 +44,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/products/:id" element={<ItemDetailContainer />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
             <Route path="/admin" element={<AddProduct />} />
           </Routes>
         </CartProvider>

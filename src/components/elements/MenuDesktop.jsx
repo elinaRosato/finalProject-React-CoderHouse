@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+// Styled Components
 import ContainerFlex from '../styled/ContainerFlex.styled';
 import MenuItem from '../styled/MenuItem.styled';
 

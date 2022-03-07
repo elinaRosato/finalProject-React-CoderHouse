@@ -1,14 +1,14 @@
-/* import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+import { Grid } from '@material-ui/core';
 
 //Contexts
 import { useCart } from "../../context/CartContext";
 
 //Components
-import { ItemCount } from '../../components';
+import ItemCount from '../../components/elements/ItemCount';
 
 //Styled Components
-import { Grid } from '@material-ui/core';
 import { DetailCardContainer, DetailCardImage, DetailCardBrand, Accent, DetailCardTitle, DetailCardDescription, DetailCardStock, DetailCardPrice, DetailCardBtn, DetailCardMenu, BackBtn } from "../styled/ItemDetail.styled";
 import { NormalText } from '../styled/Typography.styeled';
 
@@ -53,4 +53,4 @@ const ItemDetail = ({ product }) => {
     )
 };
 
-export default ItemDetail; */
+export default ItemDetail;

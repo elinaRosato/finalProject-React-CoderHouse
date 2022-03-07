@@ -2,7 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Components
-import { CartWidget, Logo, MenuDesktop } from '../../components';
+import CartWidget from '../../components/elements/CartWidget';
+import Logo from '../../components/elements/Logo';
+import MenuDesktop from '../../components/elements/MenuDesktop';
 
 // Styled Components
 import ContainerFlex from '../styled/ContainerFlex.styled';

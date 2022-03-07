@@ -23,54 +23,25 @@ import { Button, CartImage } from '../components/styled/Cart.styled';
 
 const Cart = () => {
 	const cart  = useCart()[0];
-	const totalPrice = useCart()[3];
-	console.log(totalPrice)
-
+	const subtotalPrice = useCart()[3];
+	const shippingCost = 15;
+	const tax = subtotalPrice*0.21;
+	const totalPrice = subtotalPrice + shippingCost + tax;
 
 	const isEmpty = cart.length===0
 	const [ success, setSuccess ] = useState(false);
   const [orderId, setOrderId] = useState("");
 
-	// {buyer: {name, phone, email}, products: { {id, title, price}, total}}
-	const checkout = () => {
-		const productsToBuy = cart.map (product => {
-			return {
-				id: product.id,
-				title: product.title,
-				price: product.price,
-				qty: product.qty
-			}
-		})
-
-		const buyer = {
-			name: "Elina Rosato",
-			phone: "1160126292",
-			email: "rosatoelina@gmail.com"
-		}
-
-		// Cuando hago un addDoc, si la collection no existe, se crea automaticamente
-		addDoc(collection(db, "orders"), {
-			buyer: buyer,
-			products: productsToBuy,
-			total: totalPrice
-		}).then(doc => {
-			console.log("se creo el documento con el id",doc.id)
-			setOrderId(doc.id);
-			setSuccess(true);
-		}).catch(error => {
-			console.log(error)
-		})
-	}
-
 	const EmptyCart = () => {
 		return (
 			<Container style={{backgroundColor: "white"}}>
-
-				<Button>Continue shopping</Button>
-				<p>Your cart is empty</p>
-				<p>Looks like you haven't added anything to your cart yet</p>
-				<p></p>
-			</Container>		)
+				<Subheading style={{padding: '2rem', textAlign: 'center'}}>Your cart is empty</Subheading>
+				<NormalText style={{padding: '2rem', textAlign: 'center'}}>Looks like you haven't added anything to your cart yet</NormalText>
+				<Link to="/" style={{ textDecoration: 'none', display: 'flex', justifyContent: 'center'}}>
+					<Button style={{margin: '2rem', width: '40%'}}>Continue Shopping</Button>
+				</Link>
+			</Container>		
+		)
 	};
 
 	const FilledCart = () => {
@@ -78,8 +49,8 @@ const Cart = () => {
 			<>
 				<Grid container >
 					<Grid item xs={12} md={9}>
-						<Container style={{backgroundColor: "white"}}>
-							<Subheading>My Cart</Subheading>
+						<Container style={{backgroundColor: "white", height: '100%'}}>
+							<Subheading style={{padding: '2rem'}}>My Cart</Subheading>
 							<Grid container spacing={2}>
 								{cart.map(product => {
 									return (
@@ -100,7 +71,7 @@ const Cart = () => {
 														<CartCounter id={product.id} stock={product.stock} originalQty={product.qty} />
 													</Grid>
 													<Grid item xs={3} style={{alignSelf: 'center'}}>
-														<NormalText>{product.price}</NormalText>
+														<NormalText>{product.price.toFixed(2)}</NormalText>
 													</Grid>
 												</Grid>
 											</Container>
@@ -111,32 +82,34 @@ const Cart = () => {
 						</Container>
 					</Grid>
 					<Grid item xs={12} md={3}>
-						<Container style={{backgroundColor: "red", height: '100%'}}>
+						<Container style={{background: "linear-gradient(#CCFFBD, #7ECA9C)", height: '100%'}}>
 							<Subheading>Order Summary</Subheading>
 							<Padding />
 							<SmallText>Items: {3}</SmallText>
 							<Padding />
 							<ContainerFlex style={{justifyContent: 'space-between'}}>
 								<NormalText>Subtotal:</NormalText>
-								<NormalText>{totalPrice}</NormalText>
+								<NormalText>€ {subtotalPrice.toFixed(2)}</NormalText>
 							</ContainerFlex>
 							<Padding />
 							<ContainerFlex style={{justifyContent: 'space-between'}}>
 								<NormalText>Shipping Cost:</NormalText>
-								<NormalText>EUR 15</NormalText>
+								<NormalText>€ {shippingCost}</NormalText>
 							</ContainerFlex>
 							<Padding />
 							<ContainerFlex style={{justifyContent: 'space-between'}}>
 								<NormalText>Tax:</NormalText>
-								<NormalText>{totalPrice*0.21}</NormalText>
+								<NormalText>€ {tax.toFixed(2)}</NormalText>
 							</ContainerFlex>
 							<Padding />
 							<ContainerFlex style={{justifyContent: 'space-between'}}>
 								<ImportantText>Total:</ImportantText>
-								<ImportantText>{totalPrice*1.21+15}</ImportantText>
+								<ImportantText>€ {totalPrice.toFixed(2)}</ImportantText>
 							</ContainerFlex>
 							<Padding />
-							<Button onClick={checkout}>Checkout</Button>
+							<Link to="/checkout" style={{ textDecoration: 'none' }}>
+								<Button>Checkout</Button>
+							</Link>
 						</Container>
 					</Grid>
 				</Grid>

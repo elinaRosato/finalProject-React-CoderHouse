@@ -5,7 +5,7 @@ import { Grid } from '@material-ui/core';
 import { useProducts } from '../../context/ProductsContext';
 
 //Components
-import { Item } from '../../components';
+import Item from '../../components/elements/Item';
 
 //Styled Components
 import Container from '../styled/Container.styled';
@@ -14,7 +14,7 @@ const ItemList = () => {
   const products = useProducts();
 
     return (
-      <>
+        <>
 				<Container>
 					<Grid container spacing={3}>
 						{products.map(product => {
