@@ -10,7 +10,7 @@ Bowl by Flatart from NounProject.com
 -->
 
 <!-- PROJECT TITLE -->
-# E-commerce
+# Porridge
 This is the first React App I have ever designed and developed. It's the final version of a project I have been working on during my course on Coderhouse. I hope you like it!
 
 <!-- TABLE OF CONTENTS -->
@@ -27,19 +27,19 @@ This is the first React App I have ever designed and developed. It's the final v
 </details>
 
 
-
-<!-- PROJECT REQUIREMENTS -->
-## Project Requirements
-As I said before, this is the final version of a project I have been working on during my first course on Web Development from Coderhouse.
-The task was to develop a responsive ecommerce App ...
-According to Coderhouse, the final project must meet the following requirements:
-* 
-
-
 <!-- ABOUT THE PROJECT -->
 ## About the project
 
-Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias voluptas optio pariatur et excepturi, omnis impedit molestiae saepe consectetur tempore non aspernatur asperiores sint corporis quia delectus necessitatibus, illo neque nemo?
+I'm a huge lover of porridge and all oat-based meals. This is why I decided to create a web app where you could find all oat-related recipes and products. Some features I would like to include are:
+
+* Be able to find oat-realated recipes.
+* Buy all the needed ingredients to recreate them.
+* Suscribe to a newsletter to recieve new recipes weekly.
+* Suscribe to a monthly porridge box where you'd revieve a printed recipe and all the needed ingredients to recreate it.
+* Save favourites recipes and products.
+* Sort recipes and products by category.
+
+This project is still in the building phase. I'm contantly finding new features to imporve it so if you have any idea please leave me a message :)
 
 Link to the finished project:
 
@@ -50,16 +50,18 @@ Link to the finished project:
 
 I think it will be impossible to list everything I learned but I'll give it a try:
 
-* 
+* JSX extension.
+* Understanding and bulding of reusable React components (both class and function based).
+* State and event management.
+* Setting routing and navegation.
+* Creating a custom context provider.
+* Connecting Firebase to store data.
 
 
 <!-- PROJECT SCORE -->
 ## Project Score
 
-The project scored xx/10 and this are some of the comments I received:
-
-* 
-
+The project scored 80/10 
 
 
 <!-- CONTRIBUTING -->
