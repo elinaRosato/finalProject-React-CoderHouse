@@ -82,7 +82,7 @@ Contributions are what make the open source community such an amazing place to b
 
 Elina Rosato - rosatoelina@gmail.com - [@lina.rosato] (https://www.instagram.com/lina.rosato/?hl=en)
 
-Project Link: https://elinarosato.github.io/Intencion-Elementos/
+Project Link: https://github.com/elinaRosato/finalProject-React-CoderHouse/
 
 
 
